@@ -2,13 +2,10 @@ import React from 'react';
 import { 
     AppBar,
     Toolbar,
-    IconButton,
     List,
     ListItem,
     ListItemText,
-    Divider,
     Container } from '@material-ui/core';
-import { Home } from "@material-ui/icons";
 import { makeStyles } from '@material-ui/core/styles';
 import logo from '../images/logo.png';
 
@@ -28,7 +25,9 @@ const Header = () => {
         <Toolbar>
           <Container maxWidth="xl" className={classes.navbarDisplayFlex}>
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <img src={logo} alt="logo" width = "125" height="50"/>
+          <a href="/">
+            <img src={logo} alt="logo" width = "125" height="50"/>
+          </a>
             <List
               component="nav"
               aria-labelledby="main navigation"

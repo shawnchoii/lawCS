@@ -1,5 +1,4 @@
 import "./App.css";
-import { makeStyles } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";

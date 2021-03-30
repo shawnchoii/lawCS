@@ -1,12 +1,10 @@
 import {
   Typography,
-  IconButton,
   Container,
   Grid,
   Button,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import BusinessCenterRoundedIcon from "@material-ui/icons/BusinessCenterRounded";
 import EmojiObjectsRoundedIcon from "@material-ui/icons/EmojiObjectsRounded";
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
@@ -90,7 +88,7 @@ const Home = () => {
               variant="outlined"
               color="primary"
               className={classes.button1}
-              href="http://www.commonaccord.org/index.php?action=list&file="
+              href="/test"
             >
               Discover
             </Button>
@@ -100,6 +98,7 @@ const Home = () => {
               variant="outlined"
               color="primary"
               className={classes.button1}
+              href="/test"
             >
               Discover
             </Button>
@@ -109,6 +108,7 @@ const Home = () => {
               variant="outlined"
               color="primary"
               className={classes.button1}
+              href="/test"
             >
               Discover
             </Button>
@@ -183,7 +183,6 @@ const useStyles = makeStyles({
     flexDirection: "row",
   },
   flex: {
-    marginTop: 10,
     justifyContent: "center",
     alignItems: "top",
     marginTop: 50,
