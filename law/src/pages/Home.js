@@ -20,10 +20,10 @@ const Home = () => {
   return (
     <div className="App">
       <Container>
-        <Typography className={classes.text1}>
+        <Typography className={classes.text1} align="center">
           Codifying and automating legal documents
         </Typography>
-        <Typography className={classes.text2}>
+        <Typography className={classes.text2} align="center">
           CommonAccord is an initiative to create global codes of legal
           transacting by codifying and automating legal documents, including
           contracts, permits, organizational documents, and consents. We
@@ -57,7 +57,7 @@ const Home = () => {
         </Grid>
       </Grid>
       <Grid container className={classes.users}>
-        <Typography variant="h4">Streamlined Legal Transacting</Typography>
+        <Typography variant="h4" align="center">Streamlined Legal Transacting</Typography>
         <Grid container className={classes.grid} spacing={4}>
           <Grid item xs={3}>
             <BusinessCenterRoundedIcon color="primary" />
@@ -116,7 +116,7 @@ const Home = () => {
         </Grid>
       </Grid>
 
-      <Grid container className={classes.flex}>
+      <Grid container className={classes.flex} align="center">
         <Grid item xs={3}>
           <Image fluid className={classes.image} src={MIT_image} />
         </Grid>

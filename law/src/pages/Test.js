@@ -1,12 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Typography,
   Grid,
   Box,
+  Radio,
+  RadioGroup,
+  FormControl,
+  FormLabel,
+  FormControlLabel,
 } from "@material-ui/core";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 const Test = () => {
+  const [value, setValue] = useState('1');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+  
   const classes = useStyles();
 
   return (
@@ -130,11 +142,19 @@ const Test = () => {
           <li>Amendment</li>
           <Typography>No modification of or amendment to this Agreement will be effective unless in writing and signed by the Party to be charged.</Typography>
           <li>Successors and Assigns</li>
-          <ol>
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Pick Clause</FormLabel>
+            <RadioGroup aria-label="clause" name="clause1" value={value} onChange={handleChange}>
+              <FormControlLabel value="1" control={<Radio />} label="Clause 1" />
+              <FormControlLabel value="2" control={<Radio />} label="Clause 2" />
+              <FormControlLabel value="3" control={<Radio />} label="Clause 3" />
+            </RadioGroup>
+          </FormControl>
+          {/* <ol>
             <li>Select one:</li>
             <li>Select one:</li>
             <li>Select one:</li>
-          </ol>
+          </ol> */}
           <li>Entire Agreement</li>
           <Typography>Select one:</Typography>
           <li>Notices</li>
@@ -199,5 +219,6 @@ const useStyles = makeStyles({
     color: `black`,
   },
 });
-
 export default Test;
+
+
