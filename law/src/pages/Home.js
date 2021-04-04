@@ -88,7 +88,7 @@ const Home = () => {
               variant="outlined"
               color="primary"
               className={classes.button1}
-              href="/test"
+              href="/form"
             >
               Discover
             </Button>
@@ -98,7 +98,7 @@ const Home = () => {
               variant="outlined"
               color="primary"
               className={classes.button1}
-              href="/test"
+              href="/form"
             >
               Discover
             </Button>
@@ -108,7 +108,7 @@ const Home = () => {
               variant="outlined"
               color="primary"
               className={classes.button1}
-              href="/test"
+              href="/form"
             >
               Discover
             </Button>
