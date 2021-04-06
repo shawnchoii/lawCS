@@ -94,17 +94,29 @@ const Form = () => {
 
   return (
   <Grid container className={classes.container}>
-    <TextField required label="Effective Date" name="effectiveDate" variant="outlined" value={state.effectiveDate} onChange={handleChang}/>
-    <TextField required label="Party 1" name="party1" variant="outlined" value={state.party1} onChange={handleChang}/>
-    <TextField required label="Party 2" name="party2" variant="outlined" value={state.party2} onChange={handleChang}/>
-    <TextField required label="Accessible Person" name="accessPerson" variant="outlined" value={state.accessPerson} onChange={handleChang}/>
-    <TextField required label="Confidentiality End Date" name="confidentEnd" variant="outlined" value={state.confidentEnd} onChange={handleChang}/>
-    <TextField required label="Duration of Confidentiality" name="durationConfident" variant="outlined" value={state.durationConfident} onChange={handleChang}/>
-    <TextField required label="Termination Date" name="endDate" variant="outlined" value={state.endDate} onChange={handleChang}/>
-    <TextField required label="Notice Period" name="noticePeriod" variant="outlined" value={state.noticePeriod} onChange={handleChang}/>
-    <TextField required label="State" name="state" variant="outlined" value={state.state} onChange={handleChang}/>
-    <TextField required label="Why" name="why" variant="outlined" value={state.why} onChange={handleChang}/>
-
+    {/* <Grid container>   */}
+      <Grid className={classes.textFieldStyle}>
+        <TextField required label="Effective Date" name="effectiveDate" variant="outlined" value={state.effectiveDate} onChange={handleChang}/>
+        <TextField required label="Party 1" name="party1" variant="outlined" value={state.party1} onChange={handleChang}/>
+      </Grid>
+      <Grid className={classes.textFieldStyle}>
+        <TextField required label="Party 2" name="party2" variant="outlined" value={state.party2} onChange={handleChang}/>
+        <TextField required label="Accessible Person" name="accessPerson" variant="outlined" value={state.accessPerson} onChange={handleChang}/>
+      </Grid>
+      <Grid className={classes.textFieldStyle}>
+        <TextField required label="Confidentiality End Date" name="confidentEnd" variant="outlined" value={state.confidentEnd} onChange={handleChang}/>
+        <TextField required label="Duration of Confidentiality" name="durationConfident" variant="outlined" value={state.durationConfident} onChange={handleChang}/>
+      </Grid>
+      <Grid className={classes.textFieldStyle}>
+        <TextField required label="Termination Date" name="endDate" variant="outlined" value={state.endDate} onChange={handleChang}/>
+        <TextField required label="Notice Period" name="noticePeriod" variant="outlined" value={state.noticePeriod} onChange={handleChang}/>
+      </Grid>
+      <Grid className={classes.textFieldStyle}>
+        <TextField required label="State" name="state" variant="outlined" value={state.state} onChange={handleChang}/>
+        <TextField required label="Why" name="why" variant="outlined" value={state.why} onChange={handleChang}/>
+      </Grid>
+    {/* </Grid> */}
+    
       <Divider />
       <Grid  container className={classes.grid}>
         <Grid item xs={12}>
@@ -358,18 +370,21 @@ const useStyles = makeStyles({
     textAlign: "center"
   },
   navbarDisplayFlex: {
-    display: `flex`,
+    display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
   },
   navDisplayFlex: {
-    display: `flex`,
-    justifyContent: `space-evenly`,
+    display: "flex",
+    justifyContent: "space-evenly",
   },
   linkText: {
-    textDecoration: `none`,
-    textTransform: `uppercase`,
-    color: `black`,
+    textDecoration: "none",
+    textTransform: "uppercase",
+    color: "black",
+  },
+  textFieldStyle: {
+    textAlign: 'center',
   },
 });
 export default Form;

@@ -145,13 +145,13 @@ const useStyles = makeStyles({
     alignItems: "top",
   },
   navbarDisplayFlex: {
-    display: `flex`,
+    display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
   },
   navDisplayFlex: {
-    display: `flex`,
-    justifyContent: `space-evenly`,
+    display: "flex",
+    justifyContent: "space-evenly`",
   },
   linkText: {
     textDecoration: `none`,
