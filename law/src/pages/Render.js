@@ -18,10 +18,25 @@ const Render = () => {
   let location = useLocation();
 
   const firstSelection = location.state.firstSelection;
-  const secondSelection = location.state.secondSelection;
+  const firstChoice2 = location.state.firstChoice2;
+
+  const fourthChoice = location.state.fourthChoice;
+  const fifthChoice = location.state.fifthChoice;
+  const sixthChoice = location.state.sixthChoice;
+
+  const effectiveDate = location.state.effectiveDate;
+  const party1 = location.state.party1;
+  const party2 = location.state.party2;
+  const accessPerson = location.state.accessPerson;
+  const confidentEnd = location.state.confidentEnd;
+  const durationConfident = location.state.durationConfident;
+  const endDate = location.state.endDate;
+  const noticePeriod = location.state.noticePeriod;
+  const state = location.state.state;
+  const why = location.state.why;
 
   console.log("First: ", firstSelection);
-  console.log("Second: ", secondSelection);
+  //console.log("Second: ", secondSelection);
   console.log("Effective DAte", location.state.effectiveDate);
   
   const classes = useStyles();
@@ -34,6 +49,12 @@ const Render = () => {
             <Box fontSize={19} fontWeight="fontWeightBold" m={1}>
               Mutual Non-Disclosure Agreement
             </Box>
+            <Box>
+              {party1}
+            </Box>
+            <Box>
+              {party2}
+            </Box>
           </Typography>
         </Grid>
       </Grid>
@@ -45,7 +66,7 @@ const Render = () => {
           Each a "Party" and collectively the "Parties."
         </Box>
         <Box textAlign="left" m={1}>
-          This Mutual Non-Disclosure Agreement (this "Agreement") is made as of DATE, by and between the Parties.
+          This Mutual Non-Disclosure Agreement (this "Agreement") is made as of {effectiveDate}, by and between the Parties.
         </Box>
         <Box fontSize={19} textAlign="left" fontWeight="fontWeightBold" m={1}>
           Recitals
@@ -78,7 +99,7 @@ const Render = () => {
               <li>Care</li>
               <Typography>The Receiving Party will protect Confidential Information with a degree of care that is at least the same as the Receiving Party uses to protect its own confidential information, and in any event at least a reasonable degree of care.</Typography>
               <li>Access</li>
-              <Typography>Select one:</Typography>
+              <Typography>{firstChoice2}</Typography>
 
             </ol>
             <li>Exclusions from Confidentiality</li>
@@ -97,7 +118,7 @@ const Render = () => {
             <li>Covenant Not to Decompile</li>
             <Typography>Each Party agrees that the software programs of the other Party contain valuable confidential information and each Party agrees that it will not modify, reverse engineer, decompile, create other works from, or disassemble any software programs contained in the Confidential Information of the Disclosing Party without the prior written consent of the other Party.</Typography>
             <li>Term of Confidentiality</li>
-            <Typography>Select one:</Typography>
+            <Typography>{firstChoice2}</Typography>
 
           </ol>
           <li>Limits</li>
@@ -120,18 +141,18 @@ const Render = () => {
           <li>Termination</li>
           <ol>
             <li>Term</li>
-            <Typography>This Agreement will terminate on $$$.</Typography>
+            <Typography>This Agreement will terminate on {endDate}.</Typography>
             <li>Termination</li>
-            <Typography>This Agreement may be terminated by either Party at any time upon $$$ written notice to the other Party.</Typography>
+            <Typography>This Agreement may be terminated by either Party at any time upon {noticePeriod} written notice to the other Party.</Typography>
             <li>Survival</li>
             <Typography>The Receiving Party's obligations with respect to Confidential Information of the Disclosing Party will survive termination of this Agreement.</Typography>
           </ol>
           <li>Dispute Resolution</li>
           <ol>
             <li>Law</li>
-            <Typography>This Agreement and any action related thereto will be governed, controlled, interpreted, and defined by and under the laws of $$$, without giving effect to any conflicts of laws principles that require the application of the law of a different state.</Typography>
+            <Typography>This Agreement and any action related thereto will be governed, controlled, interpreted, and defined by and under the laws of {state.state}, without giving effect to any conflicts of laws principles that require the application of the law of a different state.</Typography>
             <li>Forum</li>
-            <Typography>Any disputes under this Agreement may be brought in the state courts and the Federal courts for the county in which $$$'s principal place of business is located, and the parties hereby consent to the personal jurisdiction and exclusive venue of these courts.</Typography>
+            <Typography>Any disputes under this Agreement may be brought in the state courts and the Federal courts for the county in which {party1}'s principal place of business is located, and the parties hereby consent to the personal jurisdiction and exclusive venue of these courts.</Typography>
           </ol>
           <li>Remedies</li>
           <ol>
@@ -148,13 +169,10 @@ const Render = () => {
             <Typography>No modification of or amendment to this Agreement will be effective unless in writing and signed by the Party to be charged.</Typography>
             <li>Successors and Assigns</li>
             <Typography>{firstSelection}</Typography>
-            {/* <ol>
-              <li>Select one:</li>
-              <li>Select one:</li>
-              <li>Select one:</li>
-            </ol> */}
+            <Typography>{fourthChoice}</Typography>
+            <Typography>{fifthChoice}</Typography>
             <li>Entire Agreement</li>
-            <Typography>Select one:</Typography>
+            <Typography>{sixthChoice}</Typography>
             <li>Notices</li>
             <Typography>Any notice required or permitted by this Agreement shall be in writing and shall be delivered as follows with notice deemed given as indicated:</Typography>
             <ol>
@@ -182,6 +200,12 @@ const Render = () => {
         </Box>
         <Box textAlign="left" m={1}>
           IN WITNESS WHEREOF, the Parties have executed this Agreement as of the Effective Date.
+        </Box>
+        <Box>
+          {party1}
+        </Box>
+        <Box>
+          {party2}
         </Box>
       </Typography>
   </Grid>

@@ -16,7 +16,12 @@ import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-const firstChoice = ["A Party shall not subcontract or otherwise delegate or assign this Agreement or any of its obligations under this Agreement without the other Party's prior written consent.", "{P2.The} shall not assign or transfer any rights or obligations under this Agreement without {P1.the}'s prior written consent.", "{P1.The} shall not assign or transfer any rights or obligations under this Agreement without {P2.the}'s prior written consent."]
+// const firstChoice2 = ["The Receiving Party will permit only {Access.Persons.cl} to have access to the Confidential Information of the Disclosing Party",
+//   "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know.",
+//   "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know and who have signed confidentiality agreements.",
+//   "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know and who have signed confidentiality agreements with confidentiality obligations at least as restrictive as those contained in this Agreement.",
+//   "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know and who have signed confidentiality agreements with confidentiality obligations at least as restrictive as those contained in this Agreement in a form approved in advance by the Disclosing Party.",
+//   "The Receiving Party is an individual and will not permit any other person to have access to Confidential Information of the Disclosing Party."];
 
 const Form = () => {
   // const [effectiveDate, setEffectiveDate] = useState("Effective Date");
@@ -42,6 +47,35 @@ const Form = () => {
     why: ""
   })
 
+  const firstChoice2 = ["The Receiving Party will permit only "+ state.accessPerson + " to have access to the Confidential Information of the Disclosing Party",
+  "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know.",
+  "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know and who have signed confidentiality agreements.",
+  "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know and who have signed confidentiality agreements with confidentiality obligations at least as restrictive as those contained in this Agreement.",
+  "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know and who have signed confidentiality agreements with confidentiality obligations at least as restrictive as those contained in this Agreement in a form approved in advance by the Disclosing Party.",
+  "The Receiving Party is an individual and will not permit any other person to have access to Confidential Information of the Disclosing Party."];
+
+  const thirdChoice = [
+    "The Receiving Party's obligations with respect to all Confidential Information of the Disclosing Party will terminate only pursuant to Section 1.3.",
+    "The Receiving Party's obligations with respect to all Confidential Information of the Disclosing Party will terminate on the earlier of " + state.confidentEnd + " or when all such information has become subject to an exclusion from confidentiality pursuant to Section 1.3.",
+    "The Receiving Party's obligations with respect to each element of Confidential Information of the Disclosing Party will terminate on the earlier of "+ state.durationConfident + " after the time such element was communicated by the Disclosing Party to the Receiving Party or when all such information has become subject to an exclusion from confidentiality pursuant to Section 1.3."];
+
+  const firstChoice = ["A Party shall not subcontract or otherwise delegate or assign this Agreement or any of its obligations under this Agreement without the other Party's prior written consent.", state.party2 +" shall not assign or transfer any rights or obligations under this Agreement without "+ state.party1 + "'s prior written consent.", state.party1 + " shall not assign or transfer any rights or obligations under this Agreement without " + state.party2+"'s prior written consent."]
+
+  const fourthChoice = [
+    "Any attempted assignment, subcontract, delegation, or transfer in violation of the foregoing shall be null and void.",
+    "Any attempted assignment, subcontract, delegation, or transfer in violation of the foregoing shall be null and void, except that either Party may assign this Agreement without such consent to its successor in interest by way of merger, acquisition or sale of all or substantially all of its assets.",
+    "Any attempted assignment, subcontract, delegation, or transfer in violation of the foregoing shall be null and void, except that " + state.party1 + " may assign this Agreement without such consent to its successor in interest by way of merger, acquisition or sale of all or substantially all of its assets.",
+    "Any attempted assignment, subcontract, delegation, or transfer in violation of the foregoing shall be null and void, except that " + state.party2 + " may assign this Agreement without such consent to its successor in interest by way of merger, acquisition or sale of all or substantially all of its assets."];
+
+  const fifthChoice = [
+    "Subject to the foregoing, this Agreement will be for the benefit of each Party's successors and assigns, and will be binding on each Party's assignees.",
+    "Subject to the foregoing, this Agreement will be for the benefit of " + state.party1 + "'s successors and assigns, and will be binding on " + state.party2 + "'s assignees.",
+    "Subject to the foregoing, this Agreement will be for the benefit of " + state.party2 + "'s successors and assigns, and will be binding on " + state.party1 + "'s assignees."];
+  
+  const sixthChoice = [
+    "This Agreement is the final, complete, and exclusive agreement of the Parties with respect to the subject matters hereof and supersedes and merges all prior discussions between the Parties with respect to such matters.",
+    "This Agreement is the final, complete, and exclusive agreement of the Parties with respect to the subject matters hereof and supersedes and merges all prior discussions between the Parties with respect to such matters. The Parties anticipate entering into additional agreements. This Agreement will remain in force unless and until expressly superceded by another agreement of at least equal formality signed by all of the Parties."];
+  
   const [value, setValue] = useState("0");
 
   const handleChange = (event) => {
@@ -122,8 +156,16 @@ const Form = () => {
               <li>Care</li>
               <Typography>The Receiving Party will protect Confidential Information with a degree of care that is at least the same as the Receiving Party uses to protect its own confidential information, and in any event at least a reasonable degree of care.</Typography>
               <li>Access</li>
-              <Typography>Select one:</Typography>
-
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Select One</FormLabel>
+                <RadioGroup aria-label="clause" name="clause1" value={value} onChange={handleChange}>
+                {
+                  firstChoice2.map((val, i) => (
+                    <FormControlLabel value={`${i}`} control={<Radio />} label={val} />
+                  ))
+                }
+              </RadioGroup>
+            </FormControl>
             </ol>
             <li>Exclusions from Confidentiality</li>
             <Typography>The Receiving Party will not have any obligations under this Agreement with respect to a specific portion of the Confidential Information if the Receiving Party can demonstrate with competent evidence that such portion of Confidential Information:</Typography>
@@ -141,7 +183,16 @@ const Form = () => {
             <li>Covenant Not to Decompile</li>
             <Typography>Each Party agrees that the software programs of the other Party contain valuable confidential information and each Party agrees that it will not modify, reverse engineer, decompile, create other works from, or disassemble any software programs contained in the Confidential Information of the Disclosing Party without the prior written consent of the other Party.</Typography>
             <li>Term of Confidentiality</li>
-            <Typography>Select one:</Typography>
+            <FormControl component="fieldset">
+                <FormLabel component="legend">Select One</FormLabel>
+                <RadioGroup aria-label="clause" name="clause1" value={value} onChange={handleChange}>
+                {
+                  thirdChoice.map((val, i) => (
+                    <FormControlLabel value={`${i}`} control={<Radio />} label={val} />
+                  ))
+                }
+              </RadioGroup>
+            </FormControl>
 
           </ol>
           <li>Limits</li>
@@ -191,26 +242,50 @@ const Form = () => {
             <li>Amendment</li>
             <Typography>No modification of or amendment to this Agreement will be effective unless in writing and signed by the Party to be charged.</Typography>
             <li>Successors and Assigns</li>
+            <Typography>1.</Typography>
             <FormControl component="fieldset">
-              <FormLabel component="legend">Pick Clause</FormLabel>
+              <FormLabel component="legend">Select Once</FormLabel>
               <RadioGroup aria-label="clause" name="clause1" value={value} onChange={handleChange}>
                 {
                   firstChoice.map((val, i) => (
                     <FormControlLabel value={`${i}`} control={<Radio />} label={val} />
                   ))
-                }
-                {/* <FormControlLabel value="1" control={<Radio />} label="Clause 1" />
-                <FormControlLabel value="2" control={<Radio />} label="Clause 2" />
-                <FormControlLabel value="3" control={<Radio />} label="Clause 3" /> */}
+                  }
               </RadioGroup>
             </FormControl>
-            {/* <ol>
-              <li>Select one:</li>
-              <li>Select one:</li>
-              <li>Select one:</li>
-            </ol> */}
+            <Typography>2.</Typography>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Select Once</FormLabel>
+              <RadioGroup aria-label="clause" name="clause1" value={value} onChange={handleChange}>
+                {
+                  fourthChoice.map((val, i) => (
+                    <FormControlLabel value={`${i}`} control={<Radio />} label={val} />
+                  ))
+                  }
+              </RadioGroup>
+            </FormControl>
+            <Typography>3.</Typography>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Select Once</FormLabel>
+              <RadioGroup aria-label="clause" name="clause1" value={value} onChange={handleChange}>
+                {
+                  fifthChoice.map((val, i) => (
+                    <FormControlLabel value={`${i}`} control={<Radio />} label={val} />
+                  ))
+                  }
+              </RadioGroup>
+            </FormControl>
             <li>Entire Agreement</li>
-            <Typography>Select one:</Typography>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Select Once</FormLabel>
+              <RadioGroup aria-label="clause" name="clause1" value={value} onChange={handleChange}>
+                {
+                  sixthChoice.map((val, i) => (
+                    <FormControlLabel value={`${i}`} control={<Radio />} label={val} />
+                  ))
+                  }
+              </RadioGroup>
+            </FormControl>
             <li>Notices</li>
             <Typography>Any notice required or permitted by this Agreement shall be in writing and shall be delivered as follows with notice deemed given as indicated:</Typography>
             <ol>
@@ -239,6 +314,12 @@ const Form = () => {
         <Box textAlign="left" m={1}>
           IN WITNESS WHEREOF, the Parties have executed this Agreement as of the Effective Date.
         </Box>
+        <Box>
+          {state.party1}
+        </Box>
+        <Box>
+          {state.party2}
+        </Box>
       </Typography>
       <Link to={{ pathname: '/render', 
         state: { 
@@ -253,9 +334,12 @@ const Form = () => {
           "state": state.state,
           "why": state.why,
           "firstSelection": firstChoice[parseInt(value)], 
-          "secondSelection": value
+          "firstChoice2": firstChoice2[parseInt(value)],
+          "fourthChoice": fourthChoice[parseInt(value)],
+          "fifthChoice": fifthChoice[parseInt(value)],
+          "sixthChoice": sixthChoice[parseInt(value)],
           }}}>Generate an NDA</Link>
-      <Button variant="outlined" color="primary" href="/render">Generate an NDA</Button>
+      {/* <Button variant="outlined" color="primary" href="/render">Generate an NDA</Button> */}
   </Grid>
   )
 };
