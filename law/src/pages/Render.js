@@ -14,8 +14,6 @@ import {useLocation} from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-const firstChoice = ["A Party shall not subcontract or otherwise delegate or assign this Agreement or any of its obligations under this Agreement without the other Party's prior written consent.", "{P2.The} shall not assign or transfer any rights or obligations under this Agreement without {P1.the}'s prior written consent.", "{P1.The} shall not assign or transfer any rights or obligations under this Agreement without {P2.the}'s prior written consent."]
-
 const Render = () => {
   let location = useLocation();
 
@@ -24,6 +22,7 @@ const Render = () => {
 
   console.log("First: ", firstSelection);
   console.log("Second: ", secondSelection);
+  console.log("Effective DAte", location.state.effectiveDate);
   
   const classes = useStyles();
 
@@ -148,7 +147,7 @@ const Render = () => {
             <li>Amendment</li>
             <Typography>No modification of or amendment to this Agreement will be effective unless in writing and signed by the Party to be charged.</Typography>
             <li>Successors and Assigns</li>
-            <Typography>{firstChoice[firstSelection - 1]}</Typography>
+            <Typography>{firstSelection}</Typography>
             {/* <ol>
               <li>Select one:</li>
               <li>Select one:</li>

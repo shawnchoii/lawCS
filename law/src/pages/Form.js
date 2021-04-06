@@ -8,23 +8,70 @@ import {
   FormControl,
   FormLabel,
   FormControlLabel,
-  Button
+  Button,
+  Divider,
+  TextField
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+const firstChoice = ["A Party shall not subcontract or otherwise delegate or assign this Agreement or any of its obligations under this Agreement without the other Party's prior written consent.", "{P2.The} shall not assign or transfer any rights or obligations under this Agreement without {P1.the}'s prior written consent.", "{P1.The} shall not assign or transfer any rights or obligations under this Agreement without {P2.the}'s prior written consent."]
+
 const Form = () => {
-  const [value, setValue] = useState('1');
+  // const [effectiveDate, setEffectiveDate] = useState("Effective Date");
+  // const [party1, setParty1] = useState("Party 1");
+  // const [party2, setParty2] = useState("Party 2"); 
+  // const [accessPerson, setAccessPerson] = useState("Access Person");
+  // const [confidentEnd, setConfidentEnd] = useState("Confidentiality End Date");
+  // const [durationConfident, setDurationConfident] = useState("Duration of Confidentiality");
+  // const [endDate, setEndDate] = useState("Termination Date");
+  // const [noticePeriod, setNoticePeriod] = useState("Notice Period");
+  // const [why, setWhy] = useState("Why");
+
+  const [state, setState] = useState({
+    effectiveDate: "",
+    party1: "",
+    party2: "",
+    accessPerson: "",
+    confidentEnd: "",
+    durationConfident: "",
+    endDate: "",
+    noticePeriod: "",
+    state: "",
+    why: ""
+  })
+
+  const [value, setValue] = useState("0");
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+
+  const handleChang = (event) => {
+    const value = event.target.value;
+    setState({
+      ...state,
+      [event.target.name]: value
+    });
+  }
   
   const classes = useStyles();
 
   return (
   <Grid container className={classes.container}>
+    <TextField required label="Effective Date" name="effectiveDate" variant="outlined" value={state.effectiveDate} onChange={handleChang}/>
+    <TextField required label="Party 1" name="party1" variant="outlined" value={state.party1} onChange={handleChang}/>
+    <TextField required label="Party 2" name="party2" variant="outlined" value={state.party2} onChange={handleChang}/>
+    <TextField required label="Accessible Person" name="accessPerson" variant="outlined" value={state.accessPerson} onChange={handleChang}/>
+    <TextField required label="Confidentiality End Date" name="confidentEnd" variant="outlined" value={state.confidentEnd} onChange={handleChang}/>
+    <TextField required label="Duration of Confidentiality" name="durationConfident" variant="outlined" value={state.durationConfident} onChange={handleChang}/>
+    <TextField required label="Termination Date" name="endDate" variant="outlined" value={state.endDate} onChange={handleChang}/>
+    <TextField required label="Notice Period" name="noticePeriod" variant="outlined" value={state.noticePeriod} onChange={handleChang}/>
+    <TextField required label="State" name="state" variant="outlined" value={state.state} onChange={handleChang}/>
+    <TextField required label="Why" name="why" variant="outlined" value={state.why} onChange={handleChang}/>
+
+      <Divider />
       <Grid  container className={classes.grid}>
         <Grid item xs={12}>
           <Typography> 
@@ -42,7 +89,7 @@ const Form = () => {
           Each a "Party" and collectively the "Parties."
         </Box>
         <Box textAlign="left" m={1}>
-          This Mutual Non-Disclosure Agreement (this "Agreement") is made as of DATE, by and between the Parties.
+          This Mutual Non-Disclosure Agreement (this "Agreement") is made as of {state.effectiveDate}, by and between the Parties.
         </Box>
         <Box fontSize={19} textAlign="left" fontWeight="fontWeightBold" m={1}>
           Recitals
@@ -117,18 +164,18 @@ const Form = () => {
           <li>Termination</li>
           <ol>
             <li>Term</li>
-            <Typography>This Agreement will terminate on $$$.</Typography>
+            <Typography>This Agreement will terminate on {state.endDate}.</Typography>
             <li>Termination</li>
-            <Typography>This Agreement may be terminated by either Party at any time upon $$$ written notice to the other Party.</Typography>
+            <Typography>This Agreement may be terminated by either Party at any time upon {state.noticePeriod} written notice to the other Party.</Typography>
             <li>Survival</li>
             <Typography>The Receiving Party's obligations with respect to Confidential Information of the Disclosing Party will survive termination of this Agreement.</Typography>
           </ol>
           <li>Dispute Resolution</li>
           <ol>
             <li>Law</li>
-            <Typography>This Agreement and any action related thereto will be governed, controlled, interpreted, and defined by and under the laws of $$$, without giving effect to any conflicts of laws principles that require the application of the law of a different state.</Typography>
+            <Typography>This Agreement and any action related thereto will be governed, controlled, interpreted, and defined by and under the laws of {state.state}, without giving effect to any conflicts of laws principles that require the application of the law of a different state.</Typography>
             <li>Forum</li>
-            <Typography>Any disputes under this Agreement may be brought in the state courts and the Federal courts for the county in which $$$'s principal place of business is located, and the parties hereby consent to the personal jurisdiction and exclusive venue of these courts.</Typography>
+            <Typography>Any disputes under this Agreement may be brought in the state courts and the Federal courts for the county in which {state.party1}'s principal place of business is located, and the parties hereby consent to the personal jurisdiction and exclusive venue of these courts.</Typography>
           </ol>
           <li>Remedies</li>
           <ol>
@@ -147,9 +194,14 @@ const Form = () => {
             <FormControl component="fieldset">
               <FormLabel component="legend">Pick Clause</FormLabel>
               <RadioGroup aria-label="clause" name="clause1" value={value} onChange={handleChange}>
-                <FormControlLabel value="1" control={<Radio />} label="Clause 1" />
+                {
+                  firstChoice.map((val, i) => (
+                    <FormControlLabel value={`${i}`} control={<Radio />} label={val} />
+                  ))
+                }
+                {/* <FormControlLabel value="1" control={<Radio />} label="Clause 1" />
                 <FormControlLabel value="2" control={<Radio />} label="Clause 2" />
-                <FormControlLabel value="3" control={<Radio />} label="Clause 3" />
+                <FormControlLabel value="3" control={<Radio />} label="Clause 3" /> */}
               </RadioGroup>
             </FormControl>
             {/* <ol>
@@ -188,7 +240,21 @@ const Form = () => {
           IN WITNESS WHEREOF, the Parties have executed this Agreement as of the Effective Date.
         </Box>
       </Typography>
-      <Link to={{ pathname: '/render', state: { "firstSelection": value, "secondSelection": value }}}>Generate an NDA</Link>
+      <Link to={{ pathname: '/render', 
+        state: { 
+          "effectiveDate": state.effectiveDate,
+          "party1": state.party1,
+          "party2": state.party2,
+          "accessPerson": state.accessPerson,
+          "confidentEnd": state.confidentEnd,
+          "durationConfident": state.durationConfident,
+          "endDate": state.endDate,
+          "noticePeriod": state.noticePeriod,
+          "state": state.state,
+          "why": state.why,
+          "firstSelection": firstChoice[parseInt(value)], 
+          "secondSelection": value
+          }}}>Generate an NDA</Link>
       <Button variant="outlined" color="primary" href="/render">Generate an NDA</Button>
   </Grid>
   )

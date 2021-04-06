@@ -6,8 +6,10 @@ import Form from "./pages/Form";
 import Render from "./pages/Render";
 
 function App() {
-  return (
-    <div className="App">
+
+  const render = () => {
+    return (
+      <div className="App">
       <Router>
         <Header />
         <Route exact path="/" render={() => <Home/>} />
@@ -15,7 +17,10 @@ function App() {
         <Route exact path="/render"  render={() => <Render/>}/>
       </Router>
     </div>
-  );
+    )
+  }
+
+  return render();
 }
 
 export default App;
