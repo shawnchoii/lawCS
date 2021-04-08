@@ -14,6 +14,8 @@ import Caisse_des_img from "../images/Caisse_des_img.png";
 import labchain_logo from "../images/labchain_logo.png";
 import world_commerce from "../images/world_commerce.png";
 
+import { Link } from "react-router-dom";
+
 const Home = () => {
   const classes = useStyles();
 
@@ -84,34 +86,37 @@ const Home = () => {
         </Grid>
         <Grid container className={classes.grid} spacing={4}>
           <Grid item xs={3}>
-            <Button
-              variant="outlined"
-              color="primary"
-              className={classes.button1}
-              href="/form"
-            >
-              Discover
-            </Button>
+            <Link to="/form">
+              <Button
+                variant="outlined"
+                color="primary"
+                className={classes.button1}
+              >
+                Discover
+              </Button>
+            </Link>
           </Grid>
           <Grid item xs={3}>
-            <Button
-              variant="outlined"
-              color="primary"
-              className={classes.button1}
-              href="/form"
-            >
-              Discover
-            </Button>
+          <Link to="/form">
+              <Button
+                variant="outlined"
+                color="primary"
+                className={classes.button1}
+              >
+                Discover
+              </Button>
+            </Link>
           </Grid>
           <Grid item xs={3}>
-            <Button
-              variant="outlined"
-              color="primary"
-              className={classes.button1}
-              href="/form"
-            >
-              Discover
-            </Button>
+          <Link to="/form">
+              <Button
+                variant="outlined"
+                color="primary"
+                className={classes.button1}
+              >
+                Discover
+              </Button>
+            </Link>
           </Grid>
         </Grid>
       </Grid>

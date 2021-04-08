@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
   Typography,
   Grid,
@@ -13,10 +13,25 @@ import {
   TextField
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
-
 import { makeStyles } from "@material-ui/core/styles";
+import {firebase} from "../firebase";
 
 const Form = () => {
+  const [clause, setClause] = useState([]);
+
+  const db = firebase.database().ref();
+
+  useEffect(() => {
+    const handleData = snap => {
+      if (snap.val()) setClause(snap.val());
+    }
+    db.on('value', handleData, error => alert(error));
+    return () => { db.off('value', handleData); };
+  }, []);
+
+  // console.log(clause.clause[0].options[0].a);
+
+  console.log(clause.clause[0].options[0].a);
 
   const [state, setState] = useState({
     effectiveDate: "",
@@ -38,14 +53,25 @@ const Form = () => {
     clause4: "0",
     clause5: "0",
     clause6: "0",
-  })
+  });
 
-  const selection1 = ["The Receiving Party will permit only "+ state.accessPerson + " to have access to the Confidential Information of the Disclosing Party",
-  "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know.",
-  "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know and who have signed confidentiality agreements.",
-  "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know and who have signed confidentiality agreements with confidentiality obligations at least as restrictive as those contained in this Agreement.",
-  "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know and who have signed confidentiality agreements with confidentiality obligations at least as restrictive as those contained in this Agreement in a form approved in advance by the Disclosing Party.",
-  "The Receiving Party is an individual and will not permit any other person to have access to Confidential Information of the Disclosing Party."];
+  const selection11 = [
+    clause.clause[0].options[0].a,
+    clause.clause[0].options[0].b,
+    clause.clause[0].options[0].c,
+    clause.clause[0].options[0].d,
+    clause.clause[0].options[0].e,
+    clause.clause[0].options[0].f
+  ];
+
+  const selection1 = [
+    "The Receiving Party will permit only " + state.accessPerson + " to have access to the Confidential Information of the Disclosing Party",
+    "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party’s employees or authorized representatives who have a need to know.",
+    "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party’s employees or authorized representatives who have a need to know and who have signed confidentiality agreements.",
+    "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party’s employees or authorized representatives who have a need to know and who have signed confidentiality agreements with confidentiality obligations at least as restrictive as those contained in this Agreement.",
+    "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party’s employees or authorized representatives who have a need to know and who have signed confidentiality agreements with confidentiality obligations at least as restrictive as those contained in this Agreement in a form approved in advance by the Disclosing Party.",
+    "The Receiving Party is an individual and will not permit any other person to have access to Confidential Information of the Disclosing Party."
+  ];
 
   const selection2 = [
     "The Receiving Party's obligations with respect to all Confidential Information of the Disclosing Party will terminate only pursuant to Section 1.3.",
