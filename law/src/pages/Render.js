@@ -17,12 +17,12 @@ import { makeStyles } from "@material-ui/core/styles";
 const Render = () => {
   let location = useLocation();
 
-  const firstSelection = location.state.firstSelection;
-  const firstChoice2 = location.state.firstChoice2;
-
-  const fourthChoice = location.state.fourthChoice;
-  const fifthChoice = location.state.fifthChoice;
-  const sixthChoice = location.state.sixthChoice;
+  const selection1 = location.state.selection1;
+  const selection2 = location.state.selection2;
+  const selection3 = location.state.selection3;
+  const selection4 = location.state.selection4;
+  const selection5 = location.state.selection5;
+  const selection6 = location.state.selection6;
 
   const effectiveDate = location.state.effectiveDate;
   const party1 = location.state.party1;
@@ -35,8 +35,8 @@ const Render = () => {
   const state = location.state.state;
   const why = location.state.why;
 
-  console.log("First: ", firstSelection);
-  //console.log("Second: ", secondSelection);
+  console.log("First: ", selection1);
+  console.log("Second: ", selection2);
   console.log("Effective DAte", location.state.effectiveDate);
   
   const classes = useStyles();
@@ -99,7 +99,7 @@ const Render = () => {
               <li>Care</li>
               <Typography>The Receiving Party will protect Confidential Information with a degree of care that is at least the same as the Receiving Party uses to protect its own confidential information, and in any event at least a reasonable degree of care.</Typography>
               <li>Access</li>
-              <Typography>{firstChoice2}</Typography>
+              <Typography>{selection1}</Typography>
 
             </ol>
             <li>Exclusions from Confidentiality</li>
@@ -118,7 +118,7 @@ const Render = () => {
             <li>Covenant Not to Decompile</li>
             <Typography>Each Party agrees that the software programs of the other Party contain valuable confidential information and each Party agrees that it will not modify, reverse engineer, decompile, create other works from, or disassemble any software programs contained in the Confidential Information of the Disclosing Party without the prior written consent of the other Party.</Typography>
             <li>Term of Confidentiality</li>
-            <Typography>{firstChoice2}</Typography>
+            <Typography>{selection2}</Typography>
 
           </ol>
           <li>Limits</li>
@@ -168,11 +168,11 @@ const Render = () => {
             <li>Amendment</li>
             <Typography>No modification of or amendment to this Agreement will be effective unless in writing and signed by the Party to be charged.</Typography>
             <li>Successors and Assigns</li>
-            <Typography>{firstSelection}</Typography>
-            <Typography>{fourthChoice}</Typography>
-            <Typography>{fifthChoice}</Typography>
+            <Typography>{selection3}</Typography>
+            <Typography>{selection4}</Typography>
+            <Typography>{selection5}</Typography>
             <li>Entire Agreement</li>
-            <Typography>{sixthChoice}</Typography>
+            <Typography>{selection6}</Typography>
             <li>Notices</li>
             <Typography>Any notice required or permitted by this Agreement shall be in writing and shall be delivered as follows with notice deemed given as indicated:</Typography>
             <ol>
