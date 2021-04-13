@@ -7,12 +7,12 @@ import {
     ListItemText,
     Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import logo from '../images/logo.png';
+import new_logo from '../images/new_logo.png';
 
 const navLinks = [
   { title: `about us`, path: `/about-us` },
   { title: `product`, path: `/product` },
-  { title: `blog`, path: `/blog` },
+  // { title: `blog`, path: `/blog` },
   { title: `contact`, path: `/contact` },
   { title: `faq`, path: `/faq` }
 ];
@@ -26,7 +26,7 @@ const Header = () => {
           <Container maxWidth="xl" className={classes.navbarDisplayFlex}>
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <a href="/">
-            <img src={logo} alt="logo" width = "125" height="50"/>
+            <img src={new_logo} alt="logo" width = "125" height="50"/>
           </a>
             <List
               component="nav"

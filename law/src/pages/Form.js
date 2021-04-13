@@ -17,7 +17,24 @@ import { makeStyles } from "@material-ui/core/styles";
 import {firebase} from "../firebase";
 
 const Form = () => {
-  const [clause, setClause] = useState([]);
+  const [clause, setClause] = useState({
+    "clause": [
+        {
+            "id": 0,
+            "options": [
+                {
+                  "a1": "The Receiving Party will permit only",
+                  "a2": "to have access to the Confidential Information of the Disclosing Party.",
+                  "b": "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know.",
+                  "c": "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know and who have signed confidentiality agreements.",
+                  "d": "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know and who have signed confidentiality agreements with confidentiality obligations at least as restrictive as those contained in this Agreement.",
+                  "e": "The Receiving Party will limit access to the Confidential Information of the Disclosing Party to only those of the Receiving Party's employees or authorized representatives who have a need to know and who have signed confidentiality agreements with confidentiality obligations at least as restrictive as those contained in this Agreement in a form approved in advance by the Disclosing Party.",
+                  "f": "The Receiving Party is an individual and will not permit any other person to have access to Confidential Information of the Disclosing Party."
+              }
+          ]
+      },
+  ]
+});
 
   const db = firebase.database().ref();
 
@@ -29,9 +46,20 @@ const Form = () => {
     return () => { db.off('value', handleData); };
   }, []);
 
-  // console.log(clause.clause[0].options[0].a);
+  // useEffect(() => {
+  //   // console.log(clause)
+  //   const selection1 = [
+  //     clause.clause[0].options[0].a1 + " " + state.accessPerson + clause.clause[0].options[0].a2,
+  //     clause.clause[0].options[0].b,
+  //     clause.clause[0].options[0].c,
+  //     clause.clause[0].options[0].d,
+  //     clause.clause[0].options[0].e,
+  //     clause.clause[0].options[0].f
+  //   ];
+  //   console.log(selection1)
+  // }, [clause])
 
-  console.log(clause.clause[0].options[0].a);
+  // console.log(clause.clause[0].options[0].a);
 
   const [state, setState] = useState({
     effectiveDate: "",
@@ -55,14 +83,7 @@ const Form = () => {
     clause6: "0",
   });
 
-  const selection11 = [
-    clause.clause[0].options[0].a,
-    clause.clause[0].options[0].b,
-    clause.clause[0].options[0].c,
-    clause.clause[0].options[0].d,
-    clause.clause[0].options[0].e,
-    clause.clause[0].options[0].f
-  ];
+  // console.log(clause.clause[0].options[0].a1);
 
   const selection1 = [
     "The Receiving Party will permit only " + state.accessPerson + " to have access to the Confidential Information of the Disclosing Party",
@@ -123,27 +144,31 @@ const Form = () => {
   const classes = useStyles();
 
   return (
+  
   <Grid container className={classes.container}>
+    <Typography className={classes.text1} align="center">
+          Rapid Non-Disclosure Agreeement (NDA) Generator
+    </Typography>
     {/* <Grid container>   */}
       <Grid className={classes.textFieldStyle}>
-        <TextField required label="Effective Date" name="effectiveDate" variant="outlined" value={state.effectiveDate} onChange={handleChang}/>
-        <TextField required label="Party 1" name="party1" variant="outlined" value={state.party1} onChange={handleChang}/>
+        <TextField className={classes.leftTextField} required label="Effective Date" name="effectiveDate" variant="outlined" value={state.effectiveDate} onChange={handleChang}/>
+        <TextField className={classes.rightTextField} required label="Party 1" name="party1" variant="outlined" value={state.party1} onChange={handleChang}/>
       </Grid>
       <Grid className={classes.textFieldStyle}>
-        <TextField required label="Party 2" name="party2" variant="outlined" value={state.party2} onChange={handleChang}/>
-        <TextField required label="Accessible Person" name="accessPerson" variant="outlined" value={state.accessPerson} onChange={handleChang}/>
+        <TextField className={classes.leftTextField} required label="Party 2" name="party2" variant="outlined" value={state.party2} onChange={handleChang}/>
+        <TextField className={classes.rightTextField} required label="Accessible Person" name="accessPerson" variant="outlined" value={state.accessPerson} onChange={handleChang}/>
       </Grid>
       <Grid className={classes.textFieldStyle}>
-        <TextField required label="Confidentiality End Date" name="confidentEnd" variant="outlined" value={state.confidentEnd} onChange={handleChang}/>
-        <TextField required label="Duration of Confidentiality" name="durationConfident" variant="outlined" value={state.durationConfident} onChange={handleChang}/>
+        <TextField className={classes.leftTextField} required label="Confidentiality End Date" name="confidentEnd" variant="outlined" value={state.confidentEnd} onChange={handleChang}/>
+        <TextField className={classes.rightTextField} required label="Duration of Confidentiality" name="durationConfident" variant="outlined" value={state.durationConfident} onChange={handleChang}/>
       </Grid>
       <Grid className={classes.textFieldStyle}>
-        <TextField required label="Termination Date" name="endDate" variant="outlined" value={state.endDate} onChange={handleChang}/>
-        <TextField required label="Notice Period" name="noticePeriod" variant="outlined" value={state.noticePeriod} onChange={handleChang}/>
+        <TextField className={classes.leftTextField} required label="Termination Date" name="endDate" variant="outlined" value={state.endDate} onChange={handleChang}/>
+        <TextField className={classes.rightTextField} required label="Notice Period" name="noticePeriod" variant="outlined" value={state.noticePeriod} onChange={handleChang}/>
       </Grid>
       <Grid className={classes.textFieldStyle}>
-        <TextField required label="State" name="state" variant="outlined" value={state.state} onChange={handleChang}/>
-        <TextField required label="Why" name="why" variant="outlined" value={state.why} onChange={handleChang}/>
+        <TextField className={classes.leftTextField} required label="State" name="state" variant="outlined" value={state.state} onChange={handleChang}/>
+        <TextField className={classes.rightTextField} required label="Why" name="why" variant="outlined" value={state.why} onChange={handleChang}/>
       </Grid>
     {/* </Grid> */}
     
@@ -387,6 +412,10 @@ const Form = () => {
 };
 
 const useStyles = makeStyles({
+  text1: {
+    fontSize: 30,
+    marginTop: 15,
+  },
   appbar: {
     borderBottom: "3px solid rgb(212, 212, 212)",
   },
@@ -415,7 +444,17 @@ const useStyles = makeStyles({
   },
   textFieldStyle: {
     textAlign: 'center',
+    alignItems: "center",
+    marginBottom: 7,
+    marginTop: 7
   },
+  leftTextField: {
+    marginRight: 30,
+    width: 300
+  },
+  rightTextField: {
+    width: 300
+  }
 });
 export default Form;
 

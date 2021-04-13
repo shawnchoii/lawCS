@@ -8,11 +8,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import BusinessCenterRoundedIcon from "@material-ui/icons/BusinessCenterRounded";
 import EmojiObjectsRoundedIcon from "@material-ui/icons/EmojiObjectsRounded";
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
-import Image from "react-bootstrap/Image";
-import MIT_image from "../images/MIT_image.png";
-import Caisse_des_img from "../images/Caisse_des_img.png";
-import labchain_logo from "../images/labchain_logo.png";
-import world_commerce from "../images/world_commerce.png";
 
 import { Link } from "react-router-dom";
 
@@ -23,10 +18,10 @@ const Home = () => {
     <div className="App">
       <Container>
         <Typography className={classes.text1} align="center">
-          Codifying and automating legal documents
+          Rapid Non-Disclosure Agreeement (NDA) Generator
         </Typography>
         <Typography className={classes.text2} align="center">
-          CommonAccord is an initiative to create global codes of legal
+          Common Ground Legal is an initiative to create global codes of legal
           transacting by codifying and automating legal documents, including
           contracts, permits, organizational documents, and consents. We
           anticipate that there will be codes for each jurisdiction, in each
@@ -34,7 +29,7 @@ const Home = () => {
           at least one "global" code.
         </Typography>
       </Container>
-      <Grid container className={classes.grid} spacing={4}>
+      {/* <Grid container className={classes.grid} spacing={4}>
         <Grid item xs={2}>
           <Button
             variant="outlined"
@@ -57,7 +52,7 @@ const Home = () => {
             GitHub
           </Button>
         </Grid>
-      </Grid>
+      </Grid> */}
       <Grid container className={classes.users}>
         <Typography variant="h4" align="center">Streamlined Legal Transacting</Typography>
         <Grid container className={classes.grid} spacing={4}>
@@ -120,7 +115,7 @@ const Home = () => {
           </Grid>
         </Grid>
       </Grid>
-
+{/* 
       <Grid container className={classes.flex} align="center">
         <Grid item xs={3}>
           <Image fluid className={classes.image} src={MIT_image} />
@@ -134,7 +129,7 @@ const Home = () => {
         <Grid item xs={3}>
           <Image fluid className={classes.image} src={world_commerce} />
         </Grid>
-      </Grid>
+      </Grid> */}
     </div>
   );
 };

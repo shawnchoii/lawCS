@@ -12,8 +12,8 @@ function App() {
       <div className="App">
       <Router>
         <Header />
-        <Route exact path="/" render={() => <Home/>} />
-        <Route exact path="/form" render={() => <Form/>}/>
+        <Route exact path="/" render={() => <Form/>} />
+        <Route exact path="/form" render={() => <Home/>}/>
         <Route exact path="/render"  render={() => <Render/>}/>
       </Router>
     </div>
