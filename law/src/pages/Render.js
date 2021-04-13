@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
   Typography,
   Grid,
@@ -11,8 +11,22 @@ import {
   Button
 } from "@material-ui/core";
 import {useLocation} from "react-router-dom";
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
 
-import { makeStyles } from "@material-ui/core/styles";
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     width: '100%',
+//     '& > * + *': {
+//       marginTop: theme.spacing(2),
+//     },
+//   },
+// }));
 
 const Render = () => {
   let location = useLocation();
@@ -40,10 +54,28 @@ const Render = () => {
   console.log("Effective DAte", location.state.effectiveDate);
   
   const classes = useStyles();
+  const [open, setOpen] = useState(true);
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  },[]);
 
   return (
   <Grid container className={classes.container}>
       <Grid  container className={classes.grid}>
+      <Snackbar  anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={open} autoHideDuration={3000} onClose={handleClose} >
+        <Alert onClose={handleClose} severity="success">
+          Generated Successfully!
+        </Alert>
+      </Snackbar>
         <Grid item xs={12}>
           <Typography> 
             <Box fontSize={19} fontWeight="fontWeightBold" m={1}>

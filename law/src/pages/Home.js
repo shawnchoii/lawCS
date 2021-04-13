@@ -8,6 +8,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import BusinessCenterRoundedIcon from "@material-ui/icons/BusinessCenterRounded";
 import EmojiObjectsRoundedIcon from "@material-ui/icons/EmojiObjectsRounded";
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
+import TimerRoundedIcon from '@material-ui/icons/TimerRounded';
+import TrackChangesIcon from '@material-ui/icons/TrackChanges';
+import ListAltIcon from '@material-ui/icons/ListAlt';
+import new_logo from '../images/new_logo.svg';
 
 import { Link } from "react-router-dom";
 
@@ -17,16 +21,12 @@ const Home = () => {
   return (
     <div className="App">
       <Container>
-        <Typography className={classes.text1} align="center">
+        <img align="center" className={classes.logo} src={new_logo} alt="logo" />
+        <Typography variant="h4" style={{marginTop: 20, marginBottom: 10}} align="center">
           Rapid Non-Disclosure Agreeement (NDA) Generator
         </Typography>
         <Typography className={classes.text2} align="center">
-          Common Ground Legal is an initiative to create global codes of legal
-          transacting by codifying and automating legal documents, including
-          contracts, permits, organizational documents, and consents. We
-          anticipate that there will be codes for each jurisdiction, in each
-          language. For international dealings and coordination, there will be
-          at least one "global" code.
+          Common Ground Legal has launched a self-service tool for the rapid generation of customizable NDA's.
         </Typography>
       </Container>
       {/* <Grid container className={classes.grid} spacing={4}>
@@ -54,63 +54,66 @@ const Home = () => {
         </Grid>
       </Grid> */}
       <Grid container className={classes.users}>
-        <Typography variant="h4" align="center">Streamlined Legal Transacting</Typography>
+        <Typography variant="h4" align="center">Goals of Common Ground Legal</Typography>
         <Grid container className={classes.grid} spacing={4}>
           <Grid item xs={3}>
-            <BusinessCenterRoundedIcon color="primary" />
-            <Typography variant="h5">Corporations</Typography>
+            <TimerRoundedIcon style={{color: "#F0D219"}} />
+            <Typography variant="h5">Efficiency</Typography>
             <Typography>
-              Explore legal documents most common for coporate use
+              Rapid generation of legal documents
             </Typography>
           </Grid>
           <Grid item xs={3}>
-            <EmojiObjectsRoundedIcon color="primary" />
-            <Typography variant="h5">Univiersities</Typography>
+            <TrackChangesIcon style={{color: "#F0D219"}} />
+            <Typography variant="h5">Consistency</Typography>
             <Typography>
-              Explore legal documents for universities to dislcose valuable
-              research{" "}
+              Standard legal documents leveraged across the business
             </Typography>
           </Grid>
           <Grid item xs={3}>
-            <AccountCircleRoundedIcon color="primary" />
-            <Typography variant="h5">Individuals</Typography>
+            <ListAltIcon style={{color: "#F0D219"}} />
+            <Typography variant="h5">Proficiency</Typography>
             <Typography>
-              Explore legal documents used by other individuals
+              Leverage documents drafted by legal experts
             </Typography>
           </Grid>
         </Grid>
-        <Grid container className={classes.grid} spacing={4}>
+        <Grid container className={classes.grid} style={{marginTop: -15}} spacing={4}>
           <Grid item xs={3}>
-            <Link to="/form">
-              <Button
+            <Link to="/form"
+            style={{ textDecoration: 'none' }}>
+              {/* <Button
                 variant="outlined"
-                color="primary"
+                color="black"
                 className={classes.button1}
               >
                 Discover
+              </Button> */}
+            </Link>
+          </Grid>
+          <Grid item xs={3}>
+          <Link to="/"
+          style={{ textDecoration: 'none' }}>
+              <Button
+                variant="outlined"
+                style={{color: "#000000"}}
+                className={classes.button1}
+              >
+                Let's Go
               </Button>
             </Link>
           </Grid>
           <Grid item xs={3}>
-          <Link to="/form">
-              <Button
+          <Link to="/form" 
+          style={{ textDecoration: 'none' }}>
+              {/* <Button
                 variant="outlined"
-                color="primary"
+                style={{color: "#000000"}}
                 className={classes.button1}
               >
                 Discover
-              </Button>
-            </Link>
-          </Grid>
-          <Grid item xs={3}>
-          <Link to="/form">
-              <Button
-                variant="outlined"
-                color="primary"
-                className={classes.button1}
-              >
-                Discover
-              </Button>
+              </Button> */}
+              
             </Link>
           </Grid>
         </Grid>
@@ -142,6 +145,7 @@ const useStyles = makeStyles({
   grid: {
     marginTop: 10,
     justifyContent: "center",
+    textAlign: "center",
     alignItems: "top",
   },
   navbarDisplayFlex: {
@@ -187,6 +191,12 @@ const useStyles = makeStyles({
     alignItems: "top",
     marginTop: 50,
   },
+  logo: {
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: 20,
+  }
 });
 
 export default Home;

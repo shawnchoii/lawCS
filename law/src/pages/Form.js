@@ -149,13 +149,18 @@ const Form = () => {
     <Typography className={classes.text1} align="center">
           Rapid Non-Disclosure Agreeement (NDA) Generator
     </Typography>
-    {/* <Grid container>   */}
+    <Grid>
+      <Typography style={{textAlign: "center"}}>Use boxes below to fill in relevant NDA information. As the data is entered, the NDA will populate.</Typography>
+      <Typography style={{textAlign: "center"}}>Use the modulated selection buttons to choose the appropriate clause for each section. </Typography>
+      <Typography style={{textAlign: "center"}}>Press red 'Generate NDA' button at the bottom of the page once finished.</Typography>
+    </Grid>
       <Grid className={classes.textFieldStyle}>
-        <TextField className={classes.leftTextField} required label="Effective Date" name="effectiveDate" variant="outlined" value={state.effectiveDate} onChange={handleChang}/>
-        <TextField className={classes.rightTextField} required label="Party 1" name="party1" variant="outlined" value={state.party1} onChange={handleChang}/>
+        
+        <TextField className={classes.leftTextField} required label="Party 1" name="party1" variant="outlined" value={state.party1} onChange={handleChang}/>
+        <TextField className={classes.rightTextField} required label="Party 2" name="party2" variant="outlined" value={state.party2} onChange={handleChang}/>
       </Grid>
       <Grid className={classes.textFieldStyle}>
-        <TextField className={classes.leftTextField} required label="Party 2" name="party2" variant="outlined" value={state.party2} onChange={handleChang}/>
+        <TextField className={classes.leftTextField} required label="Effective Date" name="effectiveDate" variant="outlined" value={state.effectiveDate} onChange={handleChang}/> 
         <TextField className={classes.rightTextField} required label="Accessible Person" name="accessPerson" variant="outlined" value={state.accessPerson} onChange={handleChang}/>
       </Grid>
       <Grid className={classes.textFieldStyle}>
@@ -179,6 +184,12 @@ const Form = () => {
             <Box fontSize={19} fontWeight="fontWeightBold" m={1}>
               Mutual Non-Disclosure Agreement
             </Box>
+            <Box style={{textAlign: "center"}}>
+              {state.party1}
+            </Box>
+            <Box style={{textAlign: "center"}}>
+              {state.party2}
+            </Box>
           </Typography>
         </Grid>
       </Grid>
@@ -195,7 +206,7 @@ const Form = () => {
         <Box fontSize={19} textAlign="left" fontWeight="fontWeightBold" m={1}>
           Recitals
         </Box>
-        <Box textAlign="left" m={1}>
+        <Box style={{marginBottom: -25}} textAlign="left" m={1}>
         In consideration of the mutual promises contained in this Agreement and other good and valuable consideration, the receipt and sufficiency of which is hereby acknowledged, the Parties agree as follows:
         </Box>
       </Typography>
@@ -222,9 +233,9 @@ const Form = () => {
               </ol>
               <li>Care</li>
               <Typography>The Receiving Party will protect Confidential Information with a degree of care that is at least the same as the Receiving Party uses to protect its own confidential information, and in any event at least a reasonable degree of care.</Typography>
-              <li>Access</li>
+              <li>Access: SELECT ONE</li>
               <FormControl component="fieldset">
-                <FormLabel component="legend">Select One</FormLabel>
+                <FormLabel component="legend"></FormLabel>
                 <RadioGroup aria-label="clause" name="clause1" value={value.clause1} onChange={handleChange}>
                 {
                   selection1.map((val, i) => (
@@ -249,9 +260,9 @@ const Form = () => {
             <Typography>The Receiving Party will not reproduce the Confidential Information of the Disclosing Party in any form except as required to accomplish the intent of this Agreement. Any reproduction by a Receiving Party of any Confidential Information of the Disclosing Party will remain the property of the Disclosing Party and will contain any and all confidential or proprietary notices or legends that appear on the original, unless otherwise authorized in writing by the Disclosing Party.</Typography>
             <li>Covenant Not to Decompile</li>
             <Typography>Each Party agrees that the software programs of the other Party contain valuable confidential information and each Party agrees that it will not modify, reverse engineer, decompile, create other works from, or disassemble any software programs contained in the Confidential Information of the Disclosing Party without the prior written consent of the other Party.</Typography>
-            <li>Term of Confidentiality</li>
+            <li>Term of Confidentiality: SELECT ONE</li>
             <FormControl component="fieldset">
-                <FormLabel component="legend">Select One</FormLabel>
+                <FormLabel component="legend"></FormLabel>
                 <RadioGroup aria-label="clause" name="clause2" value={value.clause2} onChange={handleChange}>
                 {
                   selection2.map((val, i) => (
@@ -309,9 +320,9 @@ const Form = () => {
             <li>Amendment</li>
             <Typography>No modification of or amendment to this Agreement will be effective unless in writing and signed by the Party to be charged.</Typography>
             <li>Successors and Assigns</li>
-            <Typography>1.</Typography>
+            <Typography>1. SELECT ONE</Typography>
             <FormControl component="fieldset">
-              <FormLabel component="legend">Select Once</FormLabel>
+              <FormLabel component="legend"></FormLabel>
               <RadioGroup aria-label="clause" name="clause3" value={value.clause3} onChange={handleChange}>
                 {
                   selection3.map((val, i) => (
@@ -320,9 +331,9 @@ const Form = () => {
                   }
               </RadioGroup>
             </FormControl>
-            <Typography>2.</Typography>
+            <Typography>2. SELECT ONE</Typography>
             <FormControl component="fieldset">
-              <FormLabel component="legend">Select Once</FormLabel>
+              <FormLabel component="legend"></FormLabel>
               <RadioGroup aria-label="clause" name="clause4" value={value.clause4} onChange={handleChange}>
                 {
                   selection4.map((val, i) => (
@@ -331,9 +342,9 @@ const Form = () => {
                   }
               </RadioGroup>
             </FormControl>
-            <Typography>3.</Typography>
+            <Typography>3. SELECT ONE</Typography>
             <FormControl component="fieldset">
-              <FormLabel component="legend">Select Once</FormLabel>
+              <FormLabel component="legend"></FormLabel>
               <RadioGroup aria-label="clause" name="clause5" value={value.clause5} onChange={handleChange}>
                 {
                   selection5.map((val, i) => (
@@ -342,9 +353,9 @@ const Form = () => {
                   }
               </RadioGroup>
             </FormControl>
-            <li>Entire Agreement</li>
+            <li>Entire Agreement: SELECT ONE</li>
             <FormControl component="fieldset">
-              <FormLabel component="legend">Select Once</FormLabel>
+              <FormLabel component="legend"></FormLabel>
               <RadioGroup aria-label="clause" name="clause6" value={value.clause6} onChange={handleChange}>
                 {
                   selection6.map((val, i) => (
@@ -388,7 +399,7 @@ const Form = () => {
           {state.party2}
         </Box>
       </Typography>
-      <Link to={{ pathname: '/render', 
+      <Link style={{textAlign: "center", textDecoration: "none"}} to={{ pathname: '/render', 
         state: { 
           "effectiveDate": state.effectiveDate,
           "party1": state.party1,
@@ -406,7 +417,15 @@ const Form = () => {
           "selection4": selection4[parseInt(value.clause4)],
           "selection5": selection5[parseInt(value.clause5)],
           "selection6": selection6[parseInt(value.clause6)],
-          }}}>Generate an NDA</Link>
+          }}}>
+            <Button
+            style={{fontWeight: "bold", marginTop: 20, color: "#FF0000"}}
+            variant="outlined"
+            color="black"
+            >
+              Generate NDA
+            </Button>
+          </Link>
   </Grid>
   )
 };
@@ -421,7 +440,8 @@ const useStyles = makeStyles({
   },
   container: {
     flexDirection: "column",
-    marginBottom: 70
+    marginBottom: 70,
+    margin: 10,
   },
   grid: {
     justifyContent: "center",
