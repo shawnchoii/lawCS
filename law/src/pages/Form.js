@@ -164,18 +164,13 @@ const Form = () => {
         <TextField className={classes.rightTextField} required label="Accessible Person" name="accessPerson" variant="outlined" value={state.accessPerson} onChange={handleChang}/>
       </Grid>
       <Grid className={classes.textFieldStyle}>
-        <TextField className={classes.leftTextField} required label="Confidentiality End Date" name="confidentEnd" variant="outlined" value={state.confidentEnd} onChange={handleChang}/>
-        <TextField className={classes.rightTextField} required label="Duration of Confidentiality" name="durationConfident" variant="outlined" value={state.durationConfident} onChange={handleChang}/>
-      </Grid>
-      <Grid className={classes.textFieldStyle}>
-        <TextField className={classes.leftTextField} required label="Termination Date" name="endDate" variant="outlined" value={state.endDate} onChange={handleChang}/>
-        <TextField className={classes.rightTextField} required label="Notice Period" name="noticePeriod" variant="outlined" value={state.noticePeriod} onChange={handleChang}/>
+        <TextField className={classes.leftTextField} required label="Duration of Confidentiality" name="durationConfident" variant="outlined" value={state.durationConfident} onChange={handleChang}/>
+        <TextField className={classes.rightTextField} required label="Termination Date" name="endDate" variant="outlined" value={state.endDate} onChange={handleChang}/>
       </Grid>
       <Grid className={classes.textFieldStyle}>
         <TextField className={classes.leftTextField} required label="State" name="state" variant="outlined" value={state.state} onChange={handleChang}/>
-        <TextField className={classes.rightTextField} required label="Why" name="why" variant="outlined" value={state.why} onChange={handleChang}/>
+        <TextField className={classes.rightTextField} required label="Notice Period" name="noticePeriod" variant="outlined" value={state.noticePeriod} onChange={handleChang}/>
       </Grid>
-    {/* </Grid> */}
     
       <Divider />
       <Grid  container className={classes.grid}>

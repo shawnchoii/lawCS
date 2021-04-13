@@ -8,10 +8,12 @@ import {
     Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import new_logo from '../images/new_logo.png';
+import { Link } from "react-router-dom";
+
 
 const navLinks = [
-  { title: `product`, path: `/` },
-  { title: `about us`, path: `/form` },
+  { title: `Product`, path: `/` },
+  { title: `About Us`, path: `/form` },
 ];
 
 const Header = () => {
@@ -24,17 +26,17 @@ const Header = () => {
           <a href="/">
             <img src={new_logo} alt="logo" width = "125" height="50"/>
           </a>
+
             <List
               component="nav"
               aria-labelledby="main navigation"
               className={classes.navDisplayFlex}
             >
               {navLinks.map(({ title, path }) => (
-                <a href={path} key={title} className={classes.linkText}>
-                  <ListItem button>
-                    <ListItemText primary={title} />
-                  </ListItem>
-                </a>
+                <Link to={path} 
+                style={{ textDecoration: 'none', marginRight: 20, color: 'black' }}>
+                    {title}
+                </Link>
               ))}
             </List>
           </Container>
